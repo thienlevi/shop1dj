@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+{% extends "base.html" %}
+{% block body_block %}
+{% load static %}
+<!-- Page Features -->
+<div class="row text-center">
+{% if products %}
+{% for value in products %}
+<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+<div class="card">
+<img class="card-img-top" src="{{value.image.url}}" alt="{{value.name}}">
+<div class="card-body">
+<h4 class="services-title">{{value.name}}</h4>
+<p class="block-author">Giá: {{value.fee}} vnđ</p>
+</div>
+<div>
+<a href="{% url 'mystore:product_detail' value.pk%}" class='btn btnprimary' style="float: center;" > <span class="label label-success">Xem thêm</span> </a>
+</div>
+</div>
+</div>
+{% endfor %}
+{% endif%}
+</div>
+{% endblock %}
